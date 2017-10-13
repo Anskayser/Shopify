@@ -1,0 +1,90 @@
+<%= form_tag charges_path do %>
+  <%= link_to 'Select you Card',cards_path%>
+  <br>
+  
+<article>
+  <%if flash[:error].present? %>
+  <div id="error_explanation">
+    <p><%= flash[:error] %></p>
+  </div>
+  <%end %>
+
+  <br>
+  <label class="amount">
+  <span>Amount: $<%= @Items_price%></span>
+  </label>
+</article>
+<!-- <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+  data-key="<%#= Rails.configuration.stripe[:publishable_key] %>"
+  data-description="A month's subscription"
+  data-amount="<%= @Items_price  %>"
+  data-locale="auto"></script> -->
+<%end%>
+
+
+<div class=".payment-errors"></div>
+ 
+<%=form_tag cards_path, id: "stripe-form" do%>
+    <div class="formset">
+        <label>Card Number</label>
+        <%= text_field_tag :card_no ,'', class: 'credit-number' %>
+        <!-- <input type="text" size="20" autocomplete="off" class="credit-number" /> -->
+         <span>  </span>
+    
+ 
+    
+        <label>Security Code/CVC</label>
+        <%= text_field_tag :security_code , '', class: 'credit-security'%>
+        
+    </div>
+ 
+    <div class="formset">
+        <label>Expiration Month</label>
+       <%= text_field_tag :expiration_month , '',class: "card-expiry-month"%>
+       
+        <span>  </span>
+         <label>Expiration Year</label>
+        <%= text_field_tag :expiration_year , '', class: "card-expiry-year"%>
+    </div>
+ <%= submit_tag "submit", class: "btn btn-large btn-primary" %>
+  <!-- <button type="submit" class="submit">Submit Payment</button> -->
+<%end%>
+
+<script type="text/javascript">
+  Stripe.setPublishableKey('pk_test_yiTaJMyOgZod3dBvgTrfKqYy');
+
+// Stripe.setSecretKey('sk_test_deruWoZIju79f1enpK4mqKig')
+function stripeResponseHandler(status, response) {
+  console.log('ddddd');
+    if (response.error) {
+        $(".payment-errors").text(response.error.message);
+    } 
+    else {
+        var form$ = $("#stripe-form");
+        var token = response['id'];
+        form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+        form$.get(0).submit();
+    }
+}
+ 
+$(document).ready(function() {
+  $("#stripe-form").submit(function(event) {
+    $('.submit').attr("disabled", "disabled");
+ 
+    Stripe.createToken({
+        number: $('.credit-number').val(),
+        cvc: $('.credit-security').val(),
+        // exp_year: $('.card-expiry-month').val() +'/' + $('.card-expiry-year').val()
+        exp_month: $('.card-expiry-month').val(),
+        exp_year:  $('.card-expiry-year').val()
+    }, stripeResponseHandler);
+
+
+ 
+    // prevent the form from submitting with the default action
+    return false;
+  });
+});
+
+
+</script>

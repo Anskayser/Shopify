@@ -1,0 +1,26 @@
+
+<h1><kbd>All SubCategories </kbd></h1>
+ 
+<button type="button" class="btn-warning"><%= link_to 'Add a new Subcategory', new_admin_subcategory_path %></button>
+
+<table class="table table-striped">
+  <tr>
+    <th><h4>Name</h4></th>
+  
+     <th colspan="2"></th>
+  </tr>
+  
+  <% @subcategories.each do |subcategory| %>
+    <tr>
+      <td><%= subcategory.name %></td>
+   
+      <td><%= link_to 'Show', admin_subcategory_path(subcategory) %></td>
+      <td><%= link_to 'Edit', edit_admin_subcategory_path(subcategory) %></td>
+      <td><%= link_to 'Destroy', admin_subcategory_path(subcategory),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+
+    </tr>
+  <% end %>
+</table>
+ 						

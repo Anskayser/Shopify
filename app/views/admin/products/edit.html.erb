@@ -1,0 +1,61 @@
+
+<%= form_for [:admin, @admin_product] do |form| %>
+ 
+  <% if @admin_product.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@admin_product.errors.count, "error") %> prohibited
+        this Product from being saved:
+      </h2>
+      <ul>
+        <% @admin_product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+<p>
+  
+
+    <h2><kbd><%= form.label :Select_Category  %></kbd></h2><br>
+
+<%= form.select :category_id, options_for_select(Category.all.map {|ct| [ct.name, ct.id ]})  %>
+
+</p>
+
+
+<p>
+  
+  <%= form.label :Select_SubCategory  %><br>
+
+<%= form.select :subcategory_id, options_for_select(Subcategory.all.map {|ct| [ct.name, ct.id ]})  %>
+
+
+
+
+
+</p>
+
+
+  <p>
+   <kbd style="float: left;"><%= form.label :Name %></kbd><br>
+   <br>
+<div class="container-fluid" style="margin-right:  30%;margin-left: 10% ;margin-top: -55px;">
+    <%= form.text_field :name ,class: 'form-control'%>
+  </div>
+  </p>
+  <p>
+    <kbd style="float: left;><%= form.label :Price %></kbd><br>
+    <div class="container-fluid" style="margin-right:  30%;margin-left: 10% ;margin-top: -40px;">
+    <%= form.text_field :price ,class: 'form-control' %>
+  </kbd>
+  </p>
+ 
+  
+ 
+  <p>
+    <%= form.submit class: 'btn-info' %>
+  </p>
+ 
+<% end %>

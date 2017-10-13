@@ -1,0 +1,35 @@
+ <div class="form-group">
+<%= form_for [:admin, @admin_category] do |form| %>
+ 
+  <% if @admin_category.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@admin_category.errors.count, "error") %> prohibited
+        this category from being saved:
+      </h2>
+      <ul>
+        <% @admin_category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <kbd style="float: left;"><%= form.label :Name %></kbd><br>
+    <br>
+<div class="container-fluid" style="margin-right:  30%;margin-left: 10% ;margin-top: -55px;">
+    <%= form.text_field :name ,class: 'form-control' %>
+  </div>
+  </p>
+ 
+  
+ 
+  <p>
+  <br>
+  <br>
+    <%= form.submit  class: 'btn btn-info'%>
+  </p>
+ 
+<% end %>
+</div>

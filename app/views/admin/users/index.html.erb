@@ -1,0 +1,29 @@
+<h1><kbd>All Registered Users <kbd></h1>
+ 
+
+<table class="table table-striped">
+  <tr>
+    <th>Email Adress</th>
+   
+     <th colspan="2"></th>
+  </tr>
+  
+  <% @users.each do |user| %>
+    <tr>
+
+   <% if user.has_role?(:admin) %>
+         
+
+          <%else%>
+          
+        
+      <td><h2><small><%= user.email %></small></h2></td>
+      
+ <%end%>
+      
+      <td><%= link_to 'Remove_this_user',admin_user_path(user),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

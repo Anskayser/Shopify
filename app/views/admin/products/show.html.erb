@@ -1,0 +1,32 @@
+<kbd><h2>Current Selected Product</h2></kbd>
+
+
+<p>
+  <h3><strong>Name:</strong></h3>
+  <h5><%= @admin_product.name %></h5>
+</p>
+<div class ="well">
+
+<br>
+<br>
+
+ 
+ <p>
+  <kbd><strong>price:</strong></kbd>
+  <%= @admin_product.price %>
+</p>
+
+<p>
+ <kbd> <strong>category_Id:</strong></kbd>
+  <%= @admin_product.category.name %>
+</p>
+
+<p>
+  <kbd><strong>Subcategory_Id:</strong></kbd>
+  <%= @admin_product.subcategory.name %>
+</p>
+ 
+
+
+<%= link_to 'Back', admin_products_path  %>
+</div>

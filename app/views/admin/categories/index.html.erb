@@ -1,0 +1,26 @@
+<div class="well">
+<h1>All Categories </h1>
+ 
+<kbd><%= link_to 'Add a new category', new_admin_category_path , class: 'button-info'%></kbd>
+
+<table class="table table-striped">
+  <tr>
+    <th><h4>Name</h4></th>
+    
+     <th colspan="2"></th>
+  </tr>
+  
+  <% @categories.each do |category| %>
+    <tr>
+      <td><h4><kbd><%= category.name %></kbd></h4></td>
+   <p>
+     <td><%= link_to 'Show', admin_category_path(category) %></td> <pre>   <pre>
+      <td><%= link_to 'Edit', edit_admin_category_path(category) %></td>
+      <td><%= link_to 'Destroy', admin_category_path(category),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+</p>
+    </tr>
+  <% end %>
+</table>
+ 						</div>

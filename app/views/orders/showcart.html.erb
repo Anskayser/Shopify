@@ -1,0 +1,28 @@
+<div class="well " style="border: 5px solid grey">
+ <p><strong><%= link_to ' Back', home_index_path , class: 'btn btn-warning'%></strong></</p>
+ <p> <strong><%= link_to ' Cash My order', totalAmount_order_path , class: 'btn btn-success'%></strong></p>
+   </p>
+  
+
+ <div class="well " style="border: 5px solid black">
+<table class="table table-striped">
+
+<tr>
+    <th>Name</th>
+    <th>Price</th>
+     <th colspan="2"></th>
+  </tr>
+ 
+
+ 	
+ 	<%= @order.status %>
+
+  		<%@order.order_products.each do |op|%>
+  		<tr><td><%= op.product.name%></td>
+  		<td><%= op.product.price%><td>
+  		 <td><%= link_to 'Destroy', order_path(op),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+</td>
+  		
+  		<% end %>

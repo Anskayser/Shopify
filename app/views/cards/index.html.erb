@@ -1,0 +1,24 @@
+
+<div class="jumbotron">
+<h1>List of Credit Cards <h1>
+
+
+
+<table class="table table-striped">
+  <tr>
+    <th><p>Card_#</p></th>
+    <th><p>Expiration_Date</p></th>
+     <th colspan="2"></th>
+  </tr>
+  
+  <% @cards.each do |card| %>
+    <tr>
+      <td><p><%= card.card_no %></p></td>
+      <td><p><%= card.expiration_month %>/<%= card.expiration_year %></p></td>
+      
+
+   	<td><p><%= link_to 'Proceed', createcharge_card_path(card.id) %><p></td>
+     
+      
+    </tr>
+  <% end %>

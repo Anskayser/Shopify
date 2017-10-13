@@ -1,0 +1,58 @@
+
+<%= form_for [:admin, @admin_subcategory] do |form| %>
+ 
+  <% if @admin_subcategory.errors.any? %>
+    <div id="error_explanation" class="jumbotron">
+      <h2>
+        <%= pluralize(@admin_subcategory.errors.count, "error") %> prohibited
+        this subcategory from being saved:
+      </h2>
+      <ul>
+        <% @admin_subcategory.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br>
+  <br>
+ 
+     <kbd><%= form.label :Select_Category  %></kbd><br>
+     <br>
+     <br><br>
+     <br><br>
+
+<%= form.select :category_id, options_for_select(Category.all.map {|ct| [ct.name, ct.id ]})  %>
+
+  <p >
+  <br>
+
+   <kbd style="float: left;> <%= form.label :Enter_Name %></kbd><br>
+   <div class = "form-group">
+   <div class="container-fluid" style="margin-right:  30%;margin-left: 10% ;margin-top: -40px;">
+    <%= form.text_field :name ,class: 'form-control'  %>
+  </div>
+  </p>
+ 
+  
+ 
+
+<%#= form.collection_select(:category_id, Category.all, :id, :subcategory ) also works but show references%> 
+
+
+
+
+
+
+
+
+
+
+
+
+  <p>
+    <%= form.submit class: 'btn-info'%>
+  </p>
+ 
+<% end %>
+</div>

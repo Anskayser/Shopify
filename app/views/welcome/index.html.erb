@@ -1,0 +1,69 @@
+ <div class="container-fluid " style="color: lightblue">
+
+<h3 style="text-align: center;"><kbd>List of users</kbd></h3>
+
+
+
+
+<!-- user#new -->                                                                                      
+  
+
+
+<% if user_signed_in?%>
+<div class="table-responsive">          
+  <table class="table">
+
+  <tr>
+    
+    
+    <th>Email  </th>
+    <th>password</th>
+<th colspan="2"></th>
+
+     <th colspan="2"></th>
+  </tr>
+ 
+<!-- //for cutomise controller 
+ def destroy
+  sign_out current_user
+  current_user.destroy
+  redirect 
+ end -->
+ 
+    <tr>
+      <td><%= current_user.email %></td> 
+      <br>
+      <td><%= current_user.password %></td>
+     
+      
+
+      <td><%= link_to 'Show', user_registration_path %></td>
+      <td><%= link_to 'Edit', edit_user_registration_path %></td>
+      <td><%= link_to 'Delete user',destroy_user_session_path,
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+
+    </tr> 
+    </table>
+  
+</table>
+</div>
+<li>
+  
+  <button type="button" class="btn btn-succes"><%= link_to 'Sign out ', destroy_user_session_path , method: :delete%></button>
+</li>
+<%else%>
+<p>
+<li>
+  
+  <button type="button" class="btn btn-succes"><%= link_to 'Sign In ', new_user_session_path%></button>
+</li>
+</p>
+
+<li>
+  
+  <button type="button" class="btn btn-succes"><%= link_to 'Sign Up ', new_user_registration_path%></button>
+</li>
+
+
+<%end %>	

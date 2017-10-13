@@ -1,0 +1,115 @@
+
+
+ 
+  <!-- <li><%= link_to 'add a new Category ', signout_admin_users_path%></li> -->
+   <!-- <li><%= link_to 'Add a new subcategory ', signout_admin_users_path%></li> -->
+
+
+
+   <div class="container-fluid">
+
+                       
+ 
+<div class="panel panel-default">
+      
+        
+      </div>
+
+      <div id="collapse2" class="panel-collapse collapse">
+        
+    </div>
+
+
+
+            <div class="jumbotron" style="margin-top: -90px;">
+
+            <div class="dropdown" style="float: right;">
+
+    <button class="btn btn-success btn-circle dropdown-toggle" type="button" data-toggle="dropdown"><kbd >  Admin</kbd>
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+
+      <li><%= link_to 'Sign out ', signout_admin_users_path%></li>
+    
+    </ul>
+  </div>
+</div>
+
+
+                    
+                 <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Get Started</span>
+                            </button>
+                        </div>
+
+                
+          </div>
+
+                <br>
+
+  
+        <div  class="row well  well-sm">
+
+
+
+
+       
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+
+                <div class="sidebar-header">
+                    <h2><kbd>Shopify</kbd> </h2>
+                </div>
+
+                <ul class="list-unstyled components">
+                  
+                  <!--   <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a href="#">Home 1</a></li>
+                            <li><a href="#">Home 2</a></li>
+                            <li><a href="#">Home 3</a></li>
+                        </ul>
+                    </li> -->
+                    <li>
+                        <strong> <%= link_to 'Users  ', admin_users_path %></strong></li>
+                        <li><strong> <%= link_to 'Products  ', admin_products_path %></strong></li></li>
+                        <!-- <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"><strong>Category</a></strong> -->
+                        <!-- <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a href="#">Page 1</a></li>
+                            <li><a href="#">Page 2</a></li>
+                            <li><a href="#">Page 3</a></li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <strong> <%= link_to 'Categories ', admin_categories_path %></strong></li>
+                    </li>
+                    <li>
+                    <li><strong> <%= link_to 'Subcategories ', admin_subcategories_path%></strong></li>
+                     </li>
+                </ul>
+
+                <ul class="list-unstyled CTAs">
+                    <li><a href="#" class="download">Later Use</a></li>
+                    <li><a href="#" class="article">Later Use</a></li>
+                </ul>
+            </nav>
+
+         
+                
+                   
+           <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+         </script>
+   

@@ -1,0 +1,9 @@
+<h2>Total Amount </h2>
+
+<p>You Total Payment is :<br><kbd>Rs:-<%= @Items_price%><kbd></p>
+
+
+
+<%= link_to 'Select your payment method', new_charge_path ,class: 'btn btn-info'%>
+
+<%= link_to 'Back To Show Cart',showcart_order_path(@order.id), class: 'btn btn-warning' %>

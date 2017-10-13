@@ -1,0 +1,182 @@
+
+<script language="javascript" type="text/javascript">
+function clearText(field)
+{
+    if (field.defaultValue == field.value) field.value = '';
+    else if (field.value == '') field.value = field.defaultValue;
+}
+</script>
+
+<script type="text/javascript">
+
+ddsmoothmenu.init({
+  mainmenuid: "top_nav", //menu DIV id
+  orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+  classname: 'ddsmoothmenu', //class added to menu's outer DIV
+  //customtheme: ["#1c5a80", "#18374a"],
+  contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+})
+
+</script>
+
+<link rel="stylesheet" type="text/css" media="all" href="css/jquery.dualSlider.0.2.css" />
+
+
+<script type="text/javascript">
+    
+    $(document).ready(function() {
+        
+        $(".carousel").dualSlider({
+            auto:true,
+            autoDelay: 6000,
+            easingCarousel: "swing",
+            easingDetails: "easeOutBack",
+            durationCarousel: 1000,
+            durationDetails: 600
+        });
+        
+    });
+    
+</script>
+
+</head>
+
+<body>
+
+<div id="templatemo_wrapper">
+  <div id="templatemo_header" style="display: inline;">
+    
+      <div id="site_title">
+          <h1><a href="#">Station Shop</a></h1>
+        </div>
+        
+        <div id="header_right">
+          <a href="#">My Account</a> | <a href="#">My Wishlist</a> | <a href="#">My Cart</a> | <a href="#">Checkout</a> | 
+
+<% if current_user.present? %><%= link_to 'Sign out ', destroy_user_session_path , method: :delete%></button>
+          <%else%>
+          <%= link_to 'Sign In ', new_user_session_path%>
+         <%end%>
+    </div>
+        
+        <div class="cleaner"></div>
+    </div> <!-- END of templatemo_header -->
+    
+    <div id="templatemo_menu" style="background-color: black" >
+     <nav class="navbar navbar-inverse" style="background-color: black">
+      <div id="top_nav" class="ddsmoothmenu">
+            <ul>
+                <li><a href="index.html" class="selected">Home</a></li>
+                <li><a href="products.html">Products</a>
+                    <ul>
+                        <li><a href="#submenu1">Sub menu 1</a></li>
+                        <li><a href="#submenu2">Sub menu 2</a></li>
+                        <li><a href="#submenu3">Sub menu 3</a></li>
+                  </ul>
+                </li>
+                <li><a href="about.html">About</a>
+                    <ul>
+                        <li><a href="#submenu1">Sub menu 1</a></li>
+                        <li><a href="#submenu2">Sub menu 2</a></li>
+                        <li><a href="#submenu3">Sub menu 3</a></li>
+                        <li><a href="#submenu4">Sub menu 4</a></li>
+                        <li><a href="#submenu5">Sub menu 5</a></li>
+                  </ul>
+                </li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <br style="clear: left" />
+        </div> <!-- end of ddsmoothmenu -->
+        </nav>
+        <div id="menu_second_bar">
+          <div id="top_shopping_cart">
+
+
+          <% if @current_order.present? %>
+          
+                         <%= link_to 'Show Cart',showcart_order_path(@current_order.id) , class: 'btn btn-default'%>
+              <%else%>
+             
+              <%end%>
+            </div>
+          <div id="templatemo_search">
+                <form action="#" method="get">
+                  <input type="text" value="Search" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                  <input type="submit" name="Search" value=" Search " alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
+                </form>
+            </div>
+            <div class="cleaner"></div>
+      </div>
+    </div> <!-- END of templatemo_menu -->
+    
+  
+        </div><!-- /details_wrapper -->
+        
+   
+  
+      <div class="backgrounds">
+        
+       
+        <div class="item item_3">
+          <img src="/assets/01.jpg" alt="Slider 03" />
+        </div><!-- /item -->
+        
+      </div><!-- /backgrounds -->
+    </div> <!-- END of templatemo_middle -->
+    
+    <div id="templatemo_main">
+      <div id="sidebar" class="float_l">
+          <div class="sidebar_box" style="height: 100%;"><span class="bottom"></span>
+              <h3>Categories</h3>   
+                <div class="content"> 
+                  <ul class="sidebar_list">
+                      <li class="first"><a href="#">Aenean varius nulla</a></li>
+                       
+                        <li><a href="#">Vestibulum eleifend</a></li>
+                        <li class="last"><a href="#">Velit mi rutrum diam</a></li>
+                    </ul>
+                </div>
+            </div>
+          
+        </div>
+        <div id="content" class="float_r" style="width: 80%">
+          <h1>New Products</h1>
+
+<% @products.each do |product| %>
+   
+            <div class="product_box">
+              <a href="productdetail.html"><img src = <%= product.avatar.url(:thumb)%></a>
+ 
+               <p><kbd><%= product.name %><kbd></p>
+               <p>Price : <%= product.price %></p>
+
+               
+                
+                <p><strong><%= link_to 'Add to cart ',cart_order_path(product.id) %></strong></p>
+                
+
+                 <td><%= link_to 'Details', home_path(product) %></td>
+            </div>          
+<%end%>
+            
+
+
+
+
+
+        </div> 
+        <div class="cleaner"></div>
+    </div> <!-- END of templatemo_main -->
+    
+    <div id="templatemo_footer" style="width: 100%">
+      <p>
+      <a href="index.html">Home</a> | <a href="products.html">Products</a> | <a href="about.html">About</a> | <a href="faqs.html">FAQs</a> | <a href="checkout.html">Checkout</a> | <a href="contact.html">Contact</a>
+    </p>
+
+      Copyright © 2048 <a href="#">Your Company Name</a>
+    </div> <!-- END of templatemo_footer -->
+    
+</div> <!-- END of templatemo_wrapper -->
+
